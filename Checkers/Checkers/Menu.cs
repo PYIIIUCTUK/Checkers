@@ -19,7 +19,19 @@ namespace Checkers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Game game = new Game(this);
+            Game game = new Game(this, 8, 8);
+            game.Show();
+            this.Hide();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Game game = new Game(this, 12, 8);
+            game.Show();
+            this.Hide();
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Game game = new Game(this, 16, 8);
             game.Show();
             this.Hide();
         }

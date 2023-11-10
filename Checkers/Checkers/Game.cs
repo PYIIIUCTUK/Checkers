@@ -29,11 +29,13 @@ namespace Checkers
 
         Point Cell = new Point(-1, -1);
 
-        public Game(Menu myMenu)
+        public Game(Menu myMenu, int w, int h)
         {
             InitializeComponent();
 
             menu = myMenu;
+            W = w;
+            H = h;
         }
 
         private void Game_Shown(object sender, EventArgs e)
@@ -42,10 +44,7 @@ namespace Checkers
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.Sizable;
 
-            H = 8;
-            W = 8;
-
-            S = ClientSize.Height / H;
+            S = Math.Min(ClientSize.Height / H, ClientSize.Width / W);
             offsetX = (ClientSize.Width - S * W) / 2;
             offsetY = (ClientSize.Height % S) / 2;
 
@@ -551,12 +550,12 @@ namespace Checkers
 
         private bool CheckWin()
         {
-            if (players[0].Score == 12)
+            if (players[0].Score == 3 * W / 2)
             {
                 MessageBox.Show("White Win");
                 return true;
             }
-            else if (players[1].Score == 12)
+            else if (players[1].Score == 3 * W / 2)
             {
                 MessageBox.Show("Black Win");
                 return true;
